@@ -179,7 +179,15 @@ func runServ(c *cli.Context) error {
 
 	rr := strings.SplitN(repoPath, "/", 2)
 	if len(rr) != 2 {
-		return fail("Invalid repository path", "Invalid repository path: %v", repoPath)
+		if len(setting.SSH.RedirectPath) > 0 {
+		    redirectPath := strings.ToLower(setting.SSH.RedirectPath)
+		    repoPath = redirectPath + "/" + repoPath
+		    // We have updated the repoPath need to split again
+		    // And now we know that rr will be 2
+		    rr = strings.SplitN(repoPath, "/", 2)
+		} else {
+		    return fail("Invalid repository path", "Invalid repository path: %s", repoPath)
+		}
 	}
 
 	username := strings.ToLower(rr[0])

@@ -153,6 +153,7 @@ var (
 		TrustedUserCAKeysParsed               []gossh.PublicKey  `ini:"-"`
 		PerWriteTimeout                       time.Duration      `ini:"SSH_PER_WRITE_TIMEOUT"`
 		PerWritePerKbTimeout                  time.Duration      `ini:"SSH_PER_WRITE_PER_KB_TIMEOUT"`
+		RedirectPath			      string		 `ini:"SSH_REDIRECT_PATH"`
 	}{
 		Disabled:                      false,
 		StartBuiltinServer:            false,
@@ -168,6 +169,7 @@ var (
 		AuthorizedKeysCommandTemplate: "{{.AppPath}} --config={{.CustomConf}} serv key-{{.Key.ID}}",
 		PerWriteTimeout:               PerWriteTimeout,
 		PerWritePerKbTimeout:          PerWritePerKbTimeout,
+		RedirectPath:		       "",
 	}
 
 	// Security settings
