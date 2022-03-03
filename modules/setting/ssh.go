@@ -145,6 +145,9 @@ func loadSSHFrom(rootCfg ConfigProvider) {
 	if SSH.Disabled {
 		SSH.StartBuiltinServer = false
 	}
+	
+	// Make sure any SSH.RedirectPath are to lowered
+	SSH.RedirectPath = strings.ToLower(SSH.RedirectPath)
 
 	SSH.TrustedUserCAKeysFile = sec.Key("SSH_TRUSTED_USER_CA_KEYS_FILENAME").MustString(filepath.Join(SSH.RootPath, "gitea-trusted-user-ca-keys.pem"))
 
