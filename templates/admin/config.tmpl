@@ -65,6 +65,8 @@
 					<dd>{{.SSH.Port}}</dd>
 					<dt>{{.locale.Tr "admin.config.ssh_listen_port"}}</dt>
 					<dd>{{.SSH.ListenPort}}</dd>
+					<dt>{{.locale.Tr "admin.config.ssh_redirect_path"}}</dt>
+					<dd>{{.SSH.RedirectPath}}</dd>
 
 					{{if not .SSH.StartBuiltinServer}}
 						<dt>{{.locale.Tr "admin.config.ssh_root_path"}}</dt>
